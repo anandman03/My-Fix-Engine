@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/mansimaranand/Documents/dev/fix_engine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++   -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/fix_engine.dir/main.cpp.o -c /Users/mansimaranand/Documents/dev/fix_engine/main.cpp",
+  "file": "/Users/mansimaranand/Documents/dev/fix_engine/main.cpp",
+  "output": "CMakeFiles/fix_engine.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/mansimaranand/Documents/dev/fix_engine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++   -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/fix_engine.dir/src/FixEngine.cpp.o -c /Users/mansimaranand/Documents/dev/fix_engine/src/FixEngine.cpp",
+  "file": "/Users/mansimaranand/Documents/dev/fix_engine/src/FixEngine.cpp",
+  "output": "CMakeFiles/fix_engine.dir/src/FixEngine.cpp.o"
+},
+{
+  "directory": "/Users/mansimaranand/Documents/dev/fix_engine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++   -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/fix_engine.dir/src/Utils.cpp.o -c /Users/mansimaranand/Documents/dev/fix_engine/src/Utils.cpp",
+  "file": "/Users/mansimaranand/Documents/dev/fix_engine/src/Utils.cpp",
+  "output": "CMakeFiles/fix_engine.dir/src/Utils.cpp.o"
+}
+]
