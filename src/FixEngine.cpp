@@ -8,14 +8,9 @@ namespace fix
     {
         // FixEngine class method implementations
         FixEngine::FixEngine(const char* msg_str, const std::vector<Tags>& required_fields_list)
-            : required_fields_mask(0)
-            , msg_itr(msg_str)
+            : msg_itr(msg_str)
             , _field_cache(required_fields_list)
-        {
-            for (const auto& tag : required_fields_list) {
-                required_fields_mask |= get_mask<Tags>(tag);
-            }
-        }
+        {}
 
         std::pair<bool, std::unordered_map<Tags, std::string>> FixEngine::get_fields(std::vector<Tags> required_fields) noexcept
         {
@@ -48,7 +43,7 @@ namespace fix
                 ++curr_msg_itr;
             }
 
-            const bool res = _field_parser.is_message_valid() && required_fields_mask == _field_cache._fields_mask;
+            const bool res = _field_parser.is_message_valid() && _field_cache.all_required_fields_present();
 
             return {res, _field_cache._required_fields};
         }

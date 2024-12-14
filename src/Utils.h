@@ -47,6 +47,7 @@ namespace fix
 
         struct FieldCache {
             uint64_t _fields_mask;
+            uint64_t _required_fields_mask;
             std::unordered_map<Tags, std::string> _required_fields;
 
             FieldCache() = default;
@@ -54,6 +55,7 @@ namespace fix
             ~FieldCache() = default;
 
             void reset_values() noexcept;
+            bool all_required_fields_present() noexcept;
             void update_values(const Tags& tag_name, const std::string& value) noexcept;
         };
     } // namespace interface

@@ -12,11 +12,10 @@ namespace fix
         class FixEngine
         {
         private:
-            uint64_t required_fields_mask;
-            const char* msg_itr = nullptr;
-
             FieldCache _field_cache;
             FieldParser _field_parser;
+
+            const char* msg_itr = nullptr;
 
         public:
             FixEngine() = default;

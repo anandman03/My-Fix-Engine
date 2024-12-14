@@ -44,9 +44,11 @@ namespace fix
         // FieldCache struct method implementation
         FieldCache::FieldCache(const std::vector<Tags>& required_fields_list)
             : _fields_mask(0)
+            , _required_fields_mask(0)
         {
             for (const auto& tag : required_fields_list) {
                 _required_fields.emplace(tag, "");
+                _required_fields_mask |= get_mask<Tags>(tag);
             }
         }
 
@@ -65,6 +67,11 @@ namespace fix
                 _fields_mask |= get_mask<Tags>(tag_name);
                 _required_fields[tag_name] = value;
             }
+        }
+
+        bool FieldCache::all_required_fields_present() noexcept
+        {
+            return ((_required_fields_mask & _fields_mask) == _required_fields_mask);
         }
     } 
 } // namespace fix
