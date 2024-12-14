@@ -17,22 +17,17 @@ namespace fix
             }
         }
 
-        bool FixEngine::is_message_valid() const
-        {
-            return ((_field_parser._fix_message_fields & FIX_REQUIRED_FIELDS) == FIX_REQUIRED_FIELDS);
-        }
-
         std::pair<bool, std::unordered_map<Tags, std::string>> FixEngine::get_fields(std::vector<Tags> required_fields) noexcept
         {
-            _field_parser.reset_values();
             _field_cache.reset_values();
+            _field_parser.reset_values();
 
             bool last_tag_parsed = false;
             const char* curr_msg_itr = msg_itr;
 
             while (curr_msg_itr != nullptr && !last_tag_parsed) {
                 if (*curr_msg_itr == KEY_VALUE_SEP) {
-                    _field_parser._flip_append = !_field_parser._flip_append;
+                    _field_parser.flip_append();
                 }
                 else if (*curr_msg_itr == DELIM) {
                     const Tags tag_name = static_cast<Tags>(_field_parser._key);
@@ -53,7 +48,7 @@ namespace fix
                 ++curr_msg_itr;
             }
 
-            const bool res = is_message_valid() && required_fields_mask == _field_cache._fields_mask;
+            const bool res = _field_parser.is_message_valid() && required_fields_mask == _field_cache._fields_mask;
 
             return {res, _field_cache._required_fields};
         }

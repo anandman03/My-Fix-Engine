@@ -26,18 +26,23 @@ namespace fix
     namespace interface
     {
         struct FieldParser {
+        private:
+            bool _flip_append; // 0 -> key, 1 -> value
+        
+        public:
             uint64_t _key;
             std::string _value;
-            bool _flip_append;
             uint64_t _fix_message_fields;
 
             FieldParser();
             ~FieldParser() = default;
 
             void reset_values() noexcept;
-            void add_field_mask(const Tags& fix_tag) noexcept;
-            
             bool can_parse_key() noexcept;
+            void flip_append() noexcept;
+            
+            bool is_message_valid() const;
+            void add_field_mask(const Tags& fix_tag) noexcept;
         };
 
         struct FieldCache {

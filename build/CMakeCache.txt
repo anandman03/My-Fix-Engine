@@ -255,6 +255,9 @@ FIX_ENGINE_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 FIX_ENGINE_SOURCE_DIR:STATIC=/Users/mansimaranand/Documents/dev/fix_engine
 
+//Path to a program.
+GITCOMMAND:FILEPATH=/opt/homebrew/bin/git
+
 //Command to build the project
 MAKECOMMAND:STRING=/opt/homebrew/Cellar/cmake/3.27.6/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 
@@ -266,15 +269,6 @@ MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
 //Name of the computer/site where compile is being run
 SITE:STRING=Mansimars-MacBook-Pro.local
-
-//Value Computed by CMake
-fix_engine_BINARY_DIR:STATIC=/Users/mansimaranand/Documents/dev/fix_engine/build
-
-//Value Computed by CMake
-fix_engine_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-fix_engine_SOURCE_DIR:STATIC=/Users/mansimaranand/Documents/dev/fix_engine
 
 
 ########################
@@ -430,6 +424,8 @@ CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
 CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GITCOMMAND
+GITCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MAKECOMMAND
 MAKECOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_COMMAND
