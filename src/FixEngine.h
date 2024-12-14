@@ -15,16 +15,14 @@ namespace fix
             FieldCache _field_cache;
             FieldParser _field_parser;
 
-            const char* msg_itr = nullptr;
-
         public:
             FixEngine() = default;
-            FixEngine(const char* msg_str, const std::vector<Tags>& required_fields_list);
+            FixEngine(const std::vector<Tags>& required_fields_list);
 
             ~FixEngine() = default;
 
             void reset_values() noexcept;
-            std::pair<bool, std::unordered_map<Tags, std::string>> get_fields(std::vector<Tags> required_fields) noexcept;
+            std::pair<bool, std::unordered_map<Tags, std::string>> get_fields(const char* msg) noexcept;
         };
 
     } // namespace interface

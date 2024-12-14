@@ -7,9 +7,8 @@ namespace fix
     namespace interface
     {
         // FixEngine class method implementations
-        FixEngine::FixEngine(const char* msg_str, const std::vector<Tags>& required_fields_list)
-            : msg_itr(msg_str)
-            , _field_cache(required_fields_list)
+        FixEngine::FixEngine(const std::vector<Tags>& required_fields_list)
+            : _field_cache(required_fields_list)
         {}
 
         void FixEngine::reset_values() noexcept
@@ -18,13 +17,13 @@ namespace fix
             _field_parser.reset_values(true);
         }
 
-        std::pair<bool, std::unordered_map<Tags, std::string>> FixEngine::get_fields(std::vector<Tags> required_fields) noexcept
+        std::pair<bool, std::unordered_map<Tags, std::string>> FixEngine::get_fields(const char* msg) noexcept
         {
             _field_cache.reset_values();
             _field_parser.reset_values();
 
             bool last_tag_parsed = false;
-            const char* curr_msg_itr = msg_itr;
+            const char* curr_msg_itr = msg;
 
             while (curr_msg_itr != nullptr && !last_tag_parsed) {
                 if (*curr_msg_itr == KEY_VALUE_SEP) {
