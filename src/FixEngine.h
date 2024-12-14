@@ -23,6 +23,7 @@ namespace fix
 
             ~FixEngine() = default;
 
+            void reset_values() noexcept;
             std::pair<bool, std::unordered_map<Tags, std::string>> get_fields(std::vector<Tags> required_fields) noexcept;
         };
 

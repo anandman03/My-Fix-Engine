@@ -14,11 +14,15 @@ namespace fix
             _value.reserve(30);
         }
 
-        void FieldParser::reset_values() noexcept
+        void FieldParser::reset_values(bool full_reset) noexcept
         {
             _key = 0;
             _value.clear();
             _flip_append = false;
+
+            if (full_reset) {
+                _fix_message_fields = 0;
+            }
         }
 
         bool FieldParser::can_parse_key() noexcept
@@ -47,25 +51,29 @@ namespace fix
             , _required_fields_mask(0)
         {
             for (const auto& tag : required_fields_list) {
-                _required_fields.emplace(tag, "");
+                _fields_map.emplace(tag, "");
                 _required_fields_mask |= get_mask<Tags>(tag);
             }
         }
 
-        void FieldCache::reset_values() noexcept
+        void FieldCache::reset_values(bool full_reset) noexcept
         {
+            if (full_reset) {
+                _required_fields_mask = 0;
+            }
+
             _fields_mask = 0;
 
-            for (const auto itr : _required_fields) {
-                _required_fields.emplace(itr.first, "");
+            for (const auto itr : _fields_map) {
+                _fields_map.emplace(itr.first, "");
             }
         }
 
         void FieldCache::update_values(const Tags& tag_name, const std::string& value) noexcept
         {
-            if (_required_fields.contains(tag_name)) {
+            if (_fields_map.contains(tag_name)) {
                 _fields_mask |= get_mask<Tags>(tag_name);
-                _required_fields[tag_name] = value;
+                _fields_map[tag_name] = value;
             }
         }
 

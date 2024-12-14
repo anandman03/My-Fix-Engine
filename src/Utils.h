@@ -37,7 +37,7 @@ namespace fix
             FieldParser();
             ~FieldParser() = default;
 
-            void reset_values() noexcept;
+            void reset_values(bool full_reset = false) noexcept;
             bool can_parse_key() noexcept;
             void flip_append() noexcept;
             
@@ -48,13 +48,13 @@ namespace fix
         struct FieldCache {
             uint64_t _fields_mask;
             uint64_t _required_fields_mask;
-            std::unordered_map<Tags, std::string> _required_fields;
+            std::unordered_map<Tags, std::string> _fields_map;
 
             FieldCache() = default;
             FieldCache(const std::vector<Tags>& required_fields_list);
             ~FieldCache() = default;
 
-            void reset_values() noexcept;
+            void reset_values(bool full_reset = false) noexcept;
             bool all_required_fields_present() noexcept;
             void update_values(const Tags& tag_name, const std::string& value) noexcept;
         };

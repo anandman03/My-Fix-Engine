@@ -12,6 +12,12 @@ namespace fix
             , _field_cache(required_fields_list)
         {}
 
+        void FixEngine::reset_values() noexcept
+        {
+            _field_cache.reset_values(true);
+            _field_parser.reset_values(true);
+        }
+
         std::pair<bool, std::unordered_map<Tags, std::string>> FixEngine::get_fields(std::vector<Tags> required_fields) noexcept
         {
             _field_cache.reset_values();
@@ -45,7 +51,7 @@ namespace fix
 
             const bool res = _field_parser.is_message_valid() && _field_cache.all_required_fields_present();
 
-            return {res, _field_cache._required_fields};
+            return {res, _field_cache._fields_map};
         }
 
     } // namespace interface
